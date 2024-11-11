@@ -1,16 +1,26 @@
 import mdx from '@next/mdx';
 import createNextIntlPlugin from 'next-intl/plugin';
+export default withNextIntl(withMDX(nextConfig));
 
-const withMDX = mdx({
-    extension: /\.mdx?$/,
-    options: { },
-});
+try {
+    const withMDX = mdx({
+        extension: /\.mdx?$/,
+        options: { },
+    });
 
-const withNextIntl = createNextIntlPlugin();
+    const withNextIntl = createNextIntlPlugin();
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-    pageExtensions: ['ts', 'tsx', 'md', 'mdx'],
-};
+    /** @type {import('next').NextConfig} */
+    const nextConfig = {
+        pageExtensions: ['ts', 'tsx', 'md', 'mdx'],
+    };
 
-export default withMDX(nextConfig);
+    
+
+} catch (error) {
+    if (!(error instanceof Error)) {
+        throw new Error('Unexpected error type: ' + error);
+    } else {
+        throw error;
+    }
+}
