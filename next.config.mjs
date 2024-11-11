@@ -13,4 +13,4 @@ const nextConfig = {
     pageExtensions: ['ts', 'tsx', 'md', 'mdx'],
 };
 
-export default withNextIntl(withMDX(nextConfig));
+export default withMDX(withMDX(nextConfig));
